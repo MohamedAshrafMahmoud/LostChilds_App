@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "486206731765",
+    "firebase_url": "https://lostchild-d2497.firebaseio.com",
+    "project_id": "lostchild-d2497",
+    "storage_bucket": "lostchild-d2497.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486206731765:android:13c65d05576ec73b",
+        "android_client_info": {
+          "package_name": "com.example.mohamed.lostchilds"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486206731765-un558u957j0uamn8p88be002a2ccrpo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuf8fUAlFo--UU06qUQsSxIlL70WrCXqU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
