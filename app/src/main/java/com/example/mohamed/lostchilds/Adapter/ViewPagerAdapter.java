@@ -1,4 +1,4 @@
-package com.example.mohamed.lostchilds.ViewHolder;
+package com.example.mohamed.lostchilds.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

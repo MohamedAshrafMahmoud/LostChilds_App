@@ -38,7 +38,7 @@ public class Splash extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 timeSec = 1000;
-                // Start your app main activity
+                // Start your app Main activity
                 try {
                     sleep(timeSec);
 
@@ -47,7 +47,7 @@ public class Splash extends Activity {
                     e.printStackTrace();
                 } finally {
 
-                    // it must return to main thread
+                    // it must return to Main thread
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -101,7 +101,7 @@ public class Splash extends Activity {
 
 
                         if (user.getPassword().equals(password)) {
-                            Intent intent = new Intent(Splash.this, main.class);
+                            Intent intent = new Intent(Splash.this, Main.class);
                             Common.currentUser = user;
                             startActivity(intent);
                             finish();

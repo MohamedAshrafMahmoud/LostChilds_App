@@ -91,7 +91,7 @@ public class SignIn extends AppCompatActivity {
                     user.setName(name.getText().toString());
 
                     if (user.getPassword().equals(password.getText().toString())){
-                        Intent intent=new Intent(SignIn.this,main.class);
+                        Intent intent=new Intent(SignIn.this, Main.class);
                         Common.currentUser=user;
 
                         //save data when checkbox rememberme

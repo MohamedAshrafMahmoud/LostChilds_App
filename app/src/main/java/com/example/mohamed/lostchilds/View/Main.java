@@ -1,21 +1,23 @@
 package com.example.mohamed.lostchilds.View;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.mohamed.lostchilds.View.Lost.Lost;
+import com.example.mohamed.lostchilds.Fragment.Lost_fragment;
 import com.example.mohamed.lostchilds.R;
-import com.example.mohamed.lostchilds.View.found.Found;
+import com.example.mohamed.lostchilds.Fragment.Found_fragment;
 import com.example.mohamed.lostchilds.View.news.News;
-import com.example.mohamed.lostchilds.ViewHolder.ViewPagerAdapter;
+import com.example.mohamed.lostchilds.Adapter.ViewPagerAdapter;
 
 
-public class main extends AppCompatActivity {
+public class Main extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
@@ -25,9 +27,9 @@ public class main extends AppCompatActivity {
 
     //Fragments
 
-    Found found;
+    Found_fragment found;
     News news;
-    Lost lost;
+    Lost_fragment lost;
     MenuItem prevMenuItem;
 
     @Override
@@ -92,11 +94,38 @@ public class main extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         news = new News();
-        found = new Found();
-        lost = new Lost();
+        found = new Found_fragment();
+        lost = new Lost_fragment();
         adapter.addFragment(news);
         adapter.addFragment(found);
         adapter.addFragment(lost);
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.logout:
+
+                startActivity(new Intent(Main.this, SignIn.class));
+                return true;
+
+            case R.id.search:
+
+                return true;
+
+            case R.id.language:
+
+                return true;
+        }
+
+        return false;
     }
 }

@@ -6,7 +6,10 @@ import android.net.NetworkInfo;
 
 import com.example.mohamed.lostchilds.model.User;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -17,10 +20,8 @@ public class Common {
 
     //to save currnt user
     public static User currentUser;
-
-
-
-
+    public static String FoundChildCategory = "FoundChildCategory";
+    public static String LostChildCategory = "LostChildCategory";
 
 
     //for checking connection internet
@@ -43,10 +44,9 @@ public class Common {
 
 
 
-    public static String getDate(Long time){
-        Calendar calendar=Calendar.getInstance(Locale.ENGLISH);
-        calendar.setTimeInMillis(time);
-        StringBuilder date=new StringBuilder(android.text.format.DateFormat.format("dd/MM/yyyy",calendar).toString());
-        return date.toString();
+    public static String getDate() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 }

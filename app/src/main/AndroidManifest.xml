@@ -9,21 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.Splash">
+        <activity android:name=".View.SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SignIn" />
+        <activity android:name=".View.Splash" />
         <activity android:name=".View.SignUp" />
-        <activity android:name=".View.main" />
+        <activity android:name=".View.Main" />
         <activity android:name=".View.found.AddItem_Found" />
         <activity android:name=".View.Lost.AddItem_Lost" />
         <activity android:name=".View.news.AddItem_News" />
-        <activity android:name=".display_item__found" />
-        <activity android:name=".display_item__lost"></activity>
     </application>
 
 </manifest>

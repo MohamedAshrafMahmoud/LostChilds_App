@@ -82,7 +82,7 @@ public class SignUp extends AppCompatActivity {
                                     User user = new User(phone.getText().toString(), email.getText().toString(), password.getText().toString());
                                     databaseReference.child(name.getText().toString()).setValue(user);
                                     Toast.makeText(SignUp.this, "SignUp sucessfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(SignUp.this, main.class));
+                                    startActivity(new Intent(SignUp.this, Main.class));
                                     finish();
 
                                 }
