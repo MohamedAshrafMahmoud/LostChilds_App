@@ -6,10 +6,10 @@ package com.example.mohamed.lostchilds.model;
 
 public class User {
 
-    private String name;
-    private String phone;
-    private String email;
-    private String password;
+    public String name;
+    public String phone;
+    public String email;
+    public String password;
 
     public User(String phone, String email, String password) {
        // this.name = name;

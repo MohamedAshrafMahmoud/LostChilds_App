@@ -7,10 +7,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mohamed.lostchilds.R;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.maps.MapView;
 
 public class FoundViewHolder extends RecyclerView.ViewHolder {
 
-    public ImageView user_img,child_img,settings;
+    public ImageView user_img,child_img,settings,map;
     public TextView username,date,childname,helper_name,phone_number,description;
     public LinearLayout comment,share;
 
@@ -28,5 +30,7 @@ public class FoundViewHolder extends RecyclerView.ViewHolder {
         description=(TextView) itemView.findViewById(R.id.description);
         comment=(LinearLayout) itemView.findViewById(R.id.linercomment);
         share=(LinearLayout) itemView.findViewById(R.id.linershare);
+        map=itemView.findViewById(R.id.map);
+
     }
 }

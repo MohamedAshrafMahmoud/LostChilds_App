@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,7 @@ public class Main extends AppCompatActivity {
 
 
     //Fragments
+    private Toolbar mTopToolbar;
 
     Found_fragment found;
     News news;
@@ -36,7 +38,12 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        mTopToolbar = findViewById(R.id.toolbar);
 
+        savedInstanceState=getIntent().getExtras();
+
+        setSupportActionBar(mTopToolbar);
+        mTopToolbar.setTitleTextColor(getResources().getColor(R.color.mapboxWhite));
         //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
@@ -104,7 +111,7 @@ public class Main extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -117,13 +124,11 @@ public class Main extends AppCompatActivity {
                 startActivity(new Intent(Main.this, SignIn.class));
                 return true;
 
-            case R.id.search:
+            case R.id.profile:
+                startActivity(new Intent(Main.this, Profile.class));
 
                 return true;
 
-            case R.id.language:
-
-                return true;
         }
 
         return false;

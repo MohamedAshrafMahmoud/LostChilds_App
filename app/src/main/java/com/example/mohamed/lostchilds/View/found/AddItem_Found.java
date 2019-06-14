@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.mohamed.lostchilds.R;
 import com.example.mohamed.lostchilds.View.Lost.AddItem_Lost;
+import com.example.mohamed.lostchilds.View.Map.AddFoundMap;
+import com.example.mohamed.lostchilds.View.Map.MapsActivity;
 import com.example.mohamed.lostchilds.common.Common;
 import com.example.mohamed.lostchilds.model.FoundModel;
 import com.example.mohamed.lostchilds.model.LostModel;
@@ -37,7 +39,8 @@ public class AddItem_Found extends AppCompatActivity {
     ImageView back, childimage, takeimge;
     TextView username, publish;
     EditText edit_phone, edit_name, edit_description, edit_helper;
-
+    int REQUEST_CODE_1=11;
+    double Latitude,Longitude=0;
     FoundModel foundModel;
 
     DatabaseReference databaseReference;
@@ -80,7 +83,13 @@ public class AddItem_Found extends AppCompatActivity {
                     edit_description.setError("edit_description not entered");
                     edit_description.requestFocus();
                 } else {
-                    uploadData();
+
+                    if (Latitude != 0) {
+                        uploadData();
+                    }else {
+
+                        Toast.makeText(AddItem_Found.this, "Select Location", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
             }
@@ -119,6 +128,7 @@ public class AddItem_Found extends AppCompatActivity {
                                                 String.valueOf(R.drawable.ic_account_circle_black_24dp),
                                                 Common.getDate(),
                                                 edit_helper.getText().toString()
+                                                ,Latitude,Longitude
                                         );
                                     } else {
                                         foundModel = new FoundModel(
@@ -127,7 +137,8 @@ public class AddItem_Found extends AppCompatActivity {
                                                 edit_description.getText().toString(),
                                                 uri.toString(),
                                                 Common.getDate(),
-                                                edit_helper.getText().toString()
+                                                edit_helper.getText().toString(),
+                                                Latitude,Longitude
                                         );
                                     }
                                     databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(foundModel);
@@ -168,6 +179,8 @@ public class AddItem_Found extends AppCompatActivity {
         foundModel.setChild_name(edit_name.getText().toString());
         foundModel.setDescription(edit_description.getText().toString());
         foundModel.setPhone(edit_phone.getText().toString());
+        foundModel.setLatidude(Latitude);
+        foundModel.setLongitude(Longitude);
 
         databaseReference.push().setValue(foundModel);
 
@@ -204,9 +217,32 @@ public class AddItem_Found extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == pickImageRequest && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            saveuri = data.getData();
-         }
+
+
+
+        if (resultCode == RESULT_OK ) {
+
+
+            if (requestCode == pickImageRequest ) {
+                saveuri = data.getData();
+            }else if (requestCode==REQUEST_CODE_1){
+
+
+                Latitude = data.getDoubleExtra("getLatitude",0);
+                Longitude = data.getDoubleExtra("getLongitude",0);
+                Toast.makeText(this, ""+Latitude+Longitude, Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
+
+
+    public void AddLocation(View view) {
+
+        Intent intent = new Intent(AddItem_Found.this, AddFoundMap.class);
+        startActivityForResult(intent, REQUEST_CODE_1);
+
+
     }
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".View.Map.MapsActivity">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        mapbox:mapbox_cameraTargetLat="38.9098"
+        mapbox:mapbox_cameraTargetLng="-77.0295"
+        mapbox:mapbox_cameraZoom="12"/>
+
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="69dp"
+            android:layout_height="65dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/fab"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_search_black_24dp"
+            app:layout_anchorGravity="bottom|right|end"
+            mapbox:layout_constraintBottom_toBottomOf="@+id/mapView"
+            mapbox:layout_constraintEnd_toEndOf="parent"
+            mapbox:layout_constraintHorizontal_bias="1.0"
+            mapbox:layout_constraintStart_toStartOf="parent"
+            mapbox:layout_constraintVertical_bias="1.0" />
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/map_layout_rv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginBottom="5dp" />-->
+
+
+</RelativeLayout>

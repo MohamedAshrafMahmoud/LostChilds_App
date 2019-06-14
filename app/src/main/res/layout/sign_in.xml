@@ -4,85 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".View.SignIn">
 
 
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
-       />
 
 
-
-    <LinearLayout
-        android:id="@+id/signin"
+    <android.support.v7.widget.CardView
+        android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="120dp"
-        android:orientation="vertical"
-        android:background="#fff"
-        android:alpha=".7"
-        >
+        android:backgroundTint="#6A000000"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="20dp">
 
 
-
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColorHint="#49274a"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="20dp">
+            android:layout_centerInParent="true"
+            android:padding="20dp"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/etemail"
-                android:layout_width="280dp"
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="name"
-                android:text="mohamed"
-                android:textColor="#94618e"
-                android:textSize="20dp" />
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="8dp"
+                android:textColorHint="#fff">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/etemail"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="name"
+                    android:text="mohamed"
+                    android:textColor="#fff"
+                    android:textSize="20dp" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#49274a"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/etpass"
-                android:layout_width="280dp"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:text="mm"
-                android:textColor="#94618e"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="20dp"
                 android:textColorHint="#fff"
-                android:textSize="20dp" />
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#fff">
 
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/etpass"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:text="mm"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="20dp" />
+
+            </android.support.design.widget.TextInputLayout>
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
     <CheckBox
         android:id="@+id/checkremember"
-        android:layout_below="@id/signin"
-        android:layout_alignLeft="@+id/signin"
+        android:layout_below="@id/card"
+        android:layout_alignLeft="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -95,7 +95,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:layout_alignRight="@id/signin"
+        android:layout_alignRight="@id/card"
         android:layout_below="@id/checkremember"
         >
 
