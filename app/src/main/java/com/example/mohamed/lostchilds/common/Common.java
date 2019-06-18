@@ -20,6 +20,7 @@ public class Common {
 
     //to save currnt user
     public static User currentUser;
+    public static String currentUser_image ;
     public static String FoundChildCategory = "FoundChildCategory";
     public static String LostChildCategory = "LostChildCategory";
 

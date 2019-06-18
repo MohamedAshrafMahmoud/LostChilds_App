@@ -10,15 +10,27 @@ public class User {
     public String phone;
     public String email;
     public String password;
+    public String p_image;
 
-    public User(String phone, String email, String password) {
+
+
+    public User(String phone, String email, String password,String P_image) {
        // this.name = name;
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.p_image=P_image;
     }
 
     public User() {
+    }
+
+    public String getP_image() {
+        return p_image;
+    }
+
+    public void setP_image(String p_image) {
+        p_image = p_image;
     }
 
     public String getName() {

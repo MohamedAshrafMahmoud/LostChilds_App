@@ -1,5 +1,6 @@
 package com.example.mohamed.lostchilds.View;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,12 +11,23 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.mohamed.lostchilds.Fragment.Lost_fragment;
 import com.example.mohamed.lostchilds.R;
 import com.example.mohamed.lostchilds.Fragment.Found_fragment;
 import com.example.mohamed.lostchilds.View.news.News;
 import com.example.mohamed.lostchilds.Adapter.ViewPagerAdapter;
+import com.example.mohamed.lostchilds.common.Common;
+import com.example.mohamed.lostchilds.model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 public class Main extends AppCompatActivity {
@@ -28,19 +40,31 @@ public class Main extends AppCompatActivity {
 
     //Fragments
     private Toolbar mTopToolbar;
+    ImageView main_img_profile;
+    TextView main_username;
 
     Found_fragment found;
     News news;
     Lost_fragment lost;
     MenuItem prevMenuItem;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         mTopToolbar = findViewById(R.id.toolbar);
+        main_img_profile=findViewById(R.id.main_img_profile);
+        main_username=findViewById(R.id.main_username);
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        databaseReference=firebaseDatabase.getReference("User");
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("please wait ....");
 
         savedInstanceState=getIntent().getExtras();
+        GetImage_Profile();
 
         setSupportActionBar(mTopToolbar);
         mTopToolbar.setTitleTextColor(getResources().getColor(R.color.mapboxWhite));
@@ -96,6 +120,15 @@ public class Main extends AppCompatActivity {
 
 
         setupViewPager(viewPager);
+
+
+        main_img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main.this, Profile.class);
+                intent.putExtra("name",Common.currentUser.getName());
+                startActivity(intent);            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -125,12 +158,38 @@ public class Main extends AppCompatActivity {
                 return true;
 
             case R.id.profile:
-                startActivity(new Intent(Main.this, Profile.class));
-
+                Intent intent = new Intent(this, Profile.class);
+                intent.putExtra("name",Common.currentUser.getName());
+                startActivity(intent);
                 return true;
 
         }
 
         return false;
+    }
+
+    private void GetImage_Profile(){
+        progressDialog.show();
+
+        databaseReference.child(Common.currentUser.getName()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Common.currentUser_image=dataSnapshot.child("p_image").getValue().toString();
+                main_username.setText(Common.currentUser.getName());
+
+                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).into(main_img_profile);
+
+
+
+                progressDialog.dismiss();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }

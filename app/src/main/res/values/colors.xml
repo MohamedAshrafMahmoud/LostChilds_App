@@ -26,4 +26,8 @@
     <color name="nebity">#9e0b0f</color>
     <color name="buler_white">#B3FFFFFF</color>
     <color name="back2">#075056</color>
+
+    <color name="colorPrimary2">#00BAFF</color>
+    <color name="colorPrimaryDark2">#2536B4BC</color>
+    <color name="colorAccent2">#2A667EEA</color>
 </resources>

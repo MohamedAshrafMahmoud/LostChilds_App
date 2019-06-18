@@ -127,8 +127,10 @@ public class AddItem_Found extends AppCompatActivity {
                                                 edit_description.getText().toString(),
                                                 String.valueOf(R.drawable.ic_account_circle_black_24dp),
                                                 Common.getDate(),
-                                                edit_helper.getText().toString()
-                                                ,Latitude,Longitude
+                                                edit_helper.getText().toString(),
+                                                Common.currentUser.getName(),
+                                                Common.currentUser_image,
+                                                Latitude,Longitude
                                         );
                                     } else {
                                         foundModel = new FoundModel(
@@ -138,6 +140,8 @@ public class AddItem_Found extends AppCompatActivity {
                                                 uri.toString(),
                                                 Common.getDate(),
                                                 edit_helper.getText().toString(),
+                                                Common.currentUser.getName(),
+                                                Common.currentUser_image,
                                                 Latitude,Longitude
                                         );
                                     }

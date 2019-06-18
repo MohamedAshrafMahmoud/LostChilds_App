@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/colorAccent"
     tools:context=".View.SignIn">
 
 
@@ -43,7 +44,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="name"
-                    android:text="mohamed"
                     android:textColor="#fff"
                     android:textSize="20dp" />
 
@@ -67,7 +67,6 @@
                     android:ems="10"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:text="mm"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
                     android:textSize="20dp" />
@@ -107,18 +106,20 @@
             android:textSize="15dp"
             android:text="Login"
             android:textStyle="bold"
-            android:background="#dddbdb"
+            android:textColor="#fff"
+            android:background="@drawable/btn_background"
             android:layout_marginRight="5dp"
             />
 
         <Button
-            android:background="#dddbdb"
+            android:background="@drawable/btn_background"
             android:layout_weight="1"
             android:textSize="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up"
             android:textStyle="bold"
+            android:textColor="#fff"
             android:onClick="goSignUp"
             />
 

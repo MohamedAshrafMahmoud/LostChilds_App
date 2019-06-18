@@ -36,6 +36,7 @@ import com.example.mohamed.lostchilds.Adapter.LostViewHolder;
 import com.example.mohamed.lostchilds.R;
 import com.example.mohamed.lostchilds.View.Comments.Comments;
 import com.example.mohamed.lostchilds.View.Map.MapsActivity;
+import com.example.mohamed.lostchilds.View.Profile;
 import com.example.mohamed.lostchilds.View.found.AddItem_Found;
 import com.example.mohamed.lostchilds.common.Common;
 import com.example.mohamed.lostchilds.model.FoundModel;
@@ -172,13 +173,15 @@ public class Found_fragment extends Fragment  {
         adapter = new FirebaseRecyclerAdapter<FoundModel, FoundViewHolder>(FoundModel.class, R.layout.display_item__found, FoundViewHolder.class, databaseReference) {
             @Override
             protected void populateViewHolder(final FoundViewHolder viewHolder, FoundModel model, int position) {
-                viewHolder.username.setText(Common.currentUser.getName());
+                viewHolder.username.setText(model.getPublisher_name());
                 viewHolder.date.setText(model.getDate());
                 viewHolder.childname.setText(model.getChild_name());
                 viewHolder.phone_number.setText(model.getPhone());
                 viewHolder.helper_name.setText(model.getHelper());
                 viewHolder.description.setText(model.getDescription());
+                Picasso.get().load(model.getPublisher_image()).into(viewHolder.user_img);
                 Picasso.get().load(model.getChild_img()).into(viewHolder.child_img);
+
 
                 viewHolder.share.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -212,6 +215,13 @@ public class Found_fragment extends Fragment  {
 
 
                     }
+                });
+                viewHolder.user_img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), Profile.class);
+                        intent.putExtra("name",model.getPublisher_name());
+                        startActivity(intent);                    }
                 });
 
 

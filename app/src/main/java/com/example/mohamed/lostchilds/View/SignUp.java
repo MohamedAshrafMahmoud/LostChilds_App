@@ -25,6 +25,7 @@ public class SignUp extends AppCompatActivity {
 
 
     TextView name, phone, email, password, signUp;
+    String  Image="null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +80,12 @@ public class SignUp extends AppCompatActivity {
 
                                 } else {
                                     progressDialog.dismiss();
-                                    User user = new User(phone.getText().toString(), email.getText().toString(), password.getText().toString());
+                                    User user = new User(phone.getText().toString(), email.getText().toString(), password.getText().toString(),"null");
                                     databaseReference.child(name.getText().toString()).setValue(user);
                                     Toast.makeText(SignUp.this, "SignUp sucessfully", Toast.LENGTH_SHORT).show();
+                                    user.setName(name.getText().toString());
+                                    Common.currentUser=user;
+
                                     startActivity(new Intent(SignUp.this, Main.class));
                                     finish();
 

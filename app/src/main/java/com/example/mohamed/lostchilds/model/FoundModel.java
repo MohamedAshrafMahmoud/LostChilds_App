@@ -8,6 +8,9 @@ public class FoundModel {
     private String child_img;
     private String date;
     private String helper;
+    private String publisher_name;
+    private String publisher_image;
+
     private double latidude;
     private double longitude;
 
@@ -16,15 +19,33 @@ public class FoundModel {
     public FoundModel() {
     }
 
-    public FoundModel(String child_name, String phone, String description, String child_img, String date, String helper, double latidude, double longitude) {
+    public FoundModel(String child_name, String phone, String description, String child_img, String date, String helper,String publisher_name,String publisher_image, double latidude, double longitude) {
         this.child_name = child_name;
         this.phone = phone;
         this.description = description;
         this.child_img = child_img;
         this.date = date;
         this.helper = helper;
+        this.publisher_name=publisher_name;
+        this.publisher_image=publisher_image;
         this.latidude = latidude;
         this.longitude = longitude;
+    }
+
+    public String getPublisher_name() {
+        return publisher_name;
+    }
+
+    public void setPublisher_name(String publisher_name) {
+        this.publisher_name = publisher_name;
+    }
+
+    public String getPublisher_image() {
+        return publisher_image;
+    }
+
+    public void setPublisher_image(String publisher_image) {
+        this.publisher_image = publisher_image;
     }
 
     public String getChild_name() {

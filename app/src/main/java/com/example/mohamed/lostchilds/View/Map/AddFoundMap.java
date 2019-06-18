@@ -404,6 +404,9 @@ public class AddFoundMap extends AppCompatActivity implements
      * Adds a SymbolLayer which will show all of the location's icons
      */
     private void initStoreLocationIconSymbolLayer() {
+        try {
+
+
         Style style = mapboxMap.getStyle();
         if (style != null) {
             // Add the icon image to the map
@@ -426,7 +429,10 @@ public class AddFoundMap extends AppCompatActivity implements
         } else {
             Log.d("StoreFinderActivity", "initStoreLocationIconSymbolLayer: Style isn't ready yet.");
 
-            throw new IllegalStateException("Style isn't ready yet.");
+//            throw new IllegalStateException("Style isn't ready yet.");
+        }
+        }catch (Exception e){
+            finish();
         }
     }
 
@@ -451,7 +457,8 @@ public class AddFoundMap extends AppCompatActivity implements
             style.addLayer(selectedStoreLocationSymbolLayer);
         } else {
             Log.d("StoreFinderActivity", "initSelectedStoreSymbolLayer: Style isn't ready yet.");
-            throw new IllegalStateException("Style isn't ready yet.");
+//            throw new IllegalStateException("Style isn't ready yet.");
+            finish();
         }
     }
 
@@ -580,7 +587,7 @@ public class AddFoundMap extends AppCompatActivity implements
                     iconIgnorePlacement(true)
             ));
         } else {
-            throw new IllegalStateException("Style isn't ready yet.");
+//            throw new IllegalStateException("Style isn't ready yet.");
         }
     }
 
@@ -674,12 +681,14 @@ public class AddFoundMap extends AppCompatActivity implements
     protected void onStop() {
         super.onStop();
         mapView.onStop();
+        finish();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         mapView.onPause();
+        finish();
     }
 
     @Override

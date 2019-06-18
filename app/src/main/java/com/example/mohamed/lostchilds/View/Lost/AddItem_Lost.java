@@ -98,6 +98,7 @@ public class AddItem_Lost extends AppCompatActivity {
         if (saveuri != null) {
             final ProgressDialog dialog = new ProgressDialog(this);
             dialog.setMessage("Uploading ...");
+            dialog.setCancelable(false);
             dialog.show();
 
             String imgName = UUID.randomUUID().toString();
@@ -121,7 +122,9 @@ public class AddItem_Lost extends AppCompatActivity {
                                                 edit_description.getText().toString(),
                                                 edit_adress.getText().toString(),
                                                 String.valueOf(R.drawable.ic_account_circle_black_24dp),
-                                                Common.getDate()
+                                                Common.getDate(),
+                                                Common.currentUser.getName(),
+                                                Common.currentUser_image
                                         );
                                     } else {
                                         lostModel = new LostModel(
@@ -130,7 +133,9 @@ public class AddItem_Lost extends AppCompatActivity {
                                                 edit_description.getText().toString(),
                                                 edit_adress.getText().toString(),
                                                 uri.toString(),
-                                                Common.getDate());
+                                                Common.getDate(),
+                                                Common.currentUser.getName(),
+                                                Common.currentUser_image);
                                     }
                                     databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(lostModel);
                                     Toast.makeText(AddItem_Lost.this, "New post was added", Toast.LENGTH_SHORT).show();

@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 
 import com.example.mohamed.lostchilds.Adapter.LostViewHolder;
 import com.example.mohamed.lostchilds.R;
+import com.example.mohamed.lostchilds.View.Comments.Comments;
 import com.example.mohamed.lostchilds.View.Lost.AddItem_Lost;
+import com.example.mohamed.lostchilds.View.Profile;
 import com.example.mohamed.lostchilds.common.Common;
 import com.example.mohamed.lostchilds.model.LostModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -64,13 +66,36 @@ public class Lost_fragment extends Fragment {
         adapter = new FirebaseRecyclerAdapter<LostModel, LostViewHolder>(LostModel.class, R.layout.display_item__lost, LostViewHolder.class, databaseReference) {
             @Override
             protected void populateViewHolder(LostViewHolder viewHolder, LostModel model, int position) {
-                viewHolder.username.setText(Common.currentUser.getName());
+                viewHolder.username.setText(model.getPublisher_name());
                 viewHolder.date.setText(model.getDate());
                 viewHolder.childname.setText(model.getChild_name());
                 viewHolder.phone_number.setText(model.getPhone());
                 viewHolder.adress.setText(model.getAdress());
                 viewHolder.description.setText(model.getDescription());
+                Picasso.get().load(model.getPublisher_image()).into(viewHolder.user_img);
                 Picasso.get().load(model.getChild_img()).into(viewHolder.child_img);
+
+
+                viewHolder.comment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), Comments.class);
+                        intent.putExtra("postkey",adapter.getRef(position).getKey());
+                        startActivity(intent);
+
+
+
+
+                    }
+                });
+
+                viewHolder.user_img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), Profile.class);
+                        intent.putExtra("name",model.getPublisher_name());
+                        startActivity(intent);                     }
+                });
             }
         };
 

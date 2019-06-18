@@ -3,31 +3,45 @@
     package="com.example.mohamed.lostchilds">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".View.Comments.Comments"></activity>
-        <activity android:name=".View.Map.AddFoundMap" />
-        <activity android:name=".View.Profile" />
-        <activity android:name=".View.Map.MapsActivity" />
-        <activity android:name=".View.SignIn">
+        android:supportsRtl="true">
+        <activity android:name=".View.Profile"
+            android:theme="@style/profile_theme"></activity>
+        <activity android:name=".View.Comments.Comments"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.Map.AddFoundMap"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.Update"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.Map.MapsActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.SignIn"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.Splash" />
-        <activity android:name=".View.SignUp" />
-        <activity android:name=".View.Main" />
-        <activity android:name=".View.found.AddItem_Found" />
-        <activity android:name=".View.Lost.AddItem_Lost" />
-        <activity android:name=".View.news.AddItem_News" />
+        <activity android:name=".View.Splash"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.SignUp"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.Main"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.found.AddItem_Found"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.Lost.AddItem_Lost"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".View.news.AddItem_News"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
