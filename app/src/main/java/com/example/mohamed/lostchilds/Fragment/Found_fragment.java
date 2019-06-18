@@ -1,7 +1,9 @@
 package com.example.mohamed.lostchilds.Fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -46,6 +48,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
@@ -222,6 +225,43 @@ public class Found_fragment extends Fragment  {
                         Intent intent = new Intent(getActivity(), Profile.class);
                         intent.putExtra("name",model.getPublisher_name());
                         startActivity(intent);                    }
+                });
+
+                viewHolder.settings.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+                        builder.setMessage("Do you want to delet this post?");
+                        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Query applesQuery = databaseReference.child(adapter.getRef(position).getKey());
+
+                                applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                                            appleSnapshot.getRef().removeValue();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+                                    }
+                                });
+                            }
+                        });
+                        builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                           dialog.dismiss();
+                            }
+                        });
+
+                       builder.show();
+
+                    }
                 });
 
 

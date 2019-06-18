@@ -630,7 +630,13 @@ public class AddFoundMap extends AppCompatActivity implements
     private void initNavigationPolylineLineLayer() {
         // Create and add the GeoJsonSource to the map
         GeoJsonSource navigationLineLayerGeoJsonSource = new GeoJsonSource("navigation-route-source-id");
-        mapboxMap.getStyle().addSource(navigationLineLayerGeoJsonSource);
+        try {
+            mapboxMap.getStyle().addSource(navigationLineLayerGeoJsonSource);
+
+        }catch (Exception e){
+
+            finish();
+        }
 
         // Create and add the LineLayer to the map to show the navigation route line
         LineLayer navigationRouteLineLayer = new LineLayer("navigation-route-layer-id",
@@ -695,18 +701,21 @@ public class AddFoundMap extends AppCompatActivity implements
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        finish();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
+        finish();
     }
 
     private boolean deviceHasInternetConnection() {
@@ -827,10 +836,16 @@ public class AddFoundMap extends AppCompatActivity implements
                 List<Feature> featureList = featureCollection.features();
 
                 // Retrieve and update the source designated for showing the store location icons
-                GeoJsonSource source = mapboxMap.getStyle().getSourceAs("store-location-source-id");
-                if (source != null) {
-                    source.setGeoJson(FeatureCollection.fromFeatures(featureList));
+                try {
+                    GeoJsonSource source = mapboxMap.getStyle().getSourceAs("store-location-source-id");
+                    if (source != null) {
+                        source.setGeoJson(FeatureCollection.fromFeatures(featureList));
+                    }
+                }catch (Exception e){
+
+                    finish();
                 }
+
 
 
 

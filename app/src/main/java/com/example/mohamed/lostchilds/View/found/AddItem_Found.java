@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.mohamed.lostchilds.R;
 import com.example.mohamed.lostchilds.View.Lost.AddItem_Lost;
+import com.example.mohamed.lostchilds.View.Main;
 import com.example.mohamed.lostchilds.View.Map.AddFoundMap;
 import com.example.mohamed.lostchilds.View.Map.MapsActivity;
 import com.example.mohamed.lostchilds.common.Common;
@@ -147,6 +148,8 @@ public class AddItem_Found extends AppCompatActivity {
                                     }
                                     databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(foundModel);
                                     Toast.makeText(AddItem_Found.this, "New post was added", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    startActivity(new Intent(AddItem_Found.this, Main.class));
 
                                     //hide keyboard
                                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
