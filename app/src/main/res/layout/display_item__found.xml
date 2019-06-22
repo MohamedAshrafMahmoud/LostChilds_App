@@ -88,13 +88,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="200dp"
-                    android:text="name"
+                     android:text="name"
                     android:id="@+id/childname"
                     android:textColor="#000"
                     android:textSize="17dp"
@@ -131,12 +132,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
                         android:text="age"
                         android:id="@+id/childage"
                         android:textColor="#000"
@@ -157,13 +158,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:gravity="center"
+
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:text="name"
+                         android:text="name"
                         android:id="@+id/helpername"
                         android:textColor="#000"
                         android:textSize="17dp"
@@ -184,13 +186,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:gravity="center"
+
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:text="number"
+                         android:text="number"
                         android:id="@+id/phonenumber"
                         android:textColor="#000"
                         android:textSize="17dp"
@@ -209,13 +212,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                android:gravity="center"
+
+                android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
-                        android:text="description"
+                         android:text="description"
                         android:id="@+id/description"
                         android:textColor="#000"
                         android:textSize="17dp"

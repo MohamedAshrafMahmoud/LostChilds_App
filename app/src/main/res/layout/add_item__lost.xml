@@ -166,9 +166,9 @@
 
                 <EditText
                     android:id="@+id/editage"
-                    android:layout_width="250dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="20dp"
                     android:hint="   العمر"
                     android:textColor="#8a4e8e"
                     android:textSize="15dp"
@@ -282,6 +282,7 @@
                     android:layout_marginBottom="20dp"
                     android:background="#ace0f9"
                     android:gravity="top"
+                    android:paddingRight="20dp"
                     android:hint="         وصف ..."
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"

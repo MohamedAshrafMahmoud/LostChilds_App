@@ -334,7 +334,7 @@
                     android:layout_marginTop="10dp"
                     android:background="#ace0f9"
                     android:gravity="top"
-
+                    android:paddingRight="20dp"
                     android:hint="         وصف ..."
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
