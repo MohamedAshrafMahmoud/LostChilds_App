@@ -32,6 +32,8 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -39,9 +41,9 @@ public class AddItem_Found extends AppCompatActivity {
 
     ImageView back, childimage, takeimge;
     TextView username, publish;
-    EditText edit_phone, edit_name, edit_description, edit_helper;
-    int REQUEST_CODE_1=11;
-    double Latitude,Longitude=0;
+    EditText edit_phone, edit_name, edit_description, edit_helper, edit_age;
+    int REQUEST_CODE_1 = 11;
+    double Latitude, Longitude = 0;
     FoundModel foundModel;
 
     DatabaseReference databaseReference;
@@ -49,6 +51,7 @@ public class AddItem_Found extends AppCompatActivity {
 
     Uri saveuri;
     private final int pickImageRequest = 71;
+
 
 
     @Override
@@ -71,28 +74,39 @@ public class AddItem_Found extends AppCompatActivity {
             }
         });
 
+//        publish.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (edit_name.getText().toString().length() == 0) {
+//                    edit_name.setError("name not entered");
+//                    edit_name.requestFocus();
+//                } else if (edit_phone.getText().toString().length() == 0) {
+//                    edit_phone.setError("phone not entered");
+//                    edit_phone.requestFocus();
+//                } else if (edit_description.getText().toString().length() == 0) {
+//                    edit_description.setError("description not entered");
+//                    edit_description.requestFocus();
+//                }else if (edit_age.getText().toString().length() == 0) {
+//                    edit_age.setError("age not entered");
+//                    edit_age.requestFocus();
+//                } else {
+//
+//                    if (Latitude != 0) {
+//                        uploadData();
+//                    }else {
+//
+//                        Toast.makeText(AddItem_Found.this, "Select Location", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }
+//            }
+//        });
+
         publish.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (edit_name.getText().toString().length() == 0) {
-                    edit_name.setError("name not entered");
-                    edit_name.requestFocus();
-                } else if (edit_phone.getText().toString().length() == 0) {
-                    edit_phone.setError("phone not entered");
-                    edit_phone.requestFocus();
-                } else if (edit_description.getText().toString().length() == 0) {
-                    edit_description.setError("edit_description not entered");
-                    edit_description.requestFocus();
-                } else {
+            public void onClick(View view) {
 
-                    if (Latitude != 0) {
-                        uploadData();
-                    }else {
 
-                        Toast.makeText(AddItem_Found.this, "Select Location", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
             }
         });
 
@@ -131,7 +145,9 @@ public class AddItem_Found extends AppCompatActivity {
                                                 edit_helper.getText().toString(),
                                                 Common.currentUser.getName(),
                                                 Common.currentUser_image,
-                                                Latitude,Longitude
+                                                Latitude,
+                                                Longitude,
+                                                edit_age.getText().toString()
                                         );
                                     } else {
                                         foundModel = new FoundModel(
@@ -143,7 +159,9 @@ public class AddItem_Found extends AppCompatActivity {
                                                 edit_helper.getText().toString(),
                                                 Common.currentUser.getName(),
                                                 Common.currentUser_image,
-                                                Latitude,Longitude
+                                                Latitude,
+                                                Longitude,
+                                                edit_age.getText().toString()
                                         );
                                     }
                                     databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(foundModel);
@@ -186,6 +204,7 @@ public class AddItem_Found extends AppCompatActivity {
         foundModel.setChild_name(edit_name.getText().toString());
         foundModel.setDescription(edit_description.getText().toString());
         foundModel.setPhone(edit_phone.getText().toString());
+        foundModel.setAge(edit_age.getText().toString());
         foundModel.setLatidude(Latitude);
         foundModel.setLongitude(Longitude);
 
@@ -203,6 +222,7 @@ public class AddItem_Found extends AppCompatActivity {
         edit_description = (EditText) findViewById(R.id.description);
         edit_phone = (EditText) findViewById(R.id.editphone);
         edit_name = (EditText) findViewById(R.id.editname);
+        edit_age = (EditText) findViewById(R.id.editage);
         edit_helper = (EditText) findViewById(R.id.edithelper);
         username = (TextView) findViewById(R.id.username);
         takeimge = (ImageView) findViewById(R.id.takeimge);
@@ -225,19 +245,17 @@ public class AddItem_Found extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
 
+        if (resultCode == RESULT_OK) {
 
 
-        if (resultCode == RESULT_OK ) {
-
-
-            if (requestCode == pickImageRequest ) {
+            if (requestCode == pickImageRequest) {
                 saveuri = data.getData();
-            }else if (requestCode==REQUEST_CODE_1){
+            } else if (requestCode == REQUEST_CODE_1) {
 
 
-                Latitude = data.getDoubleExtra("getLatitude",0);
-                Longitude = data.getDoubleExtra("getLongitude",0);
-                Toast.makeText(this, ""+Latitude+Longitude, Toast.LENGTH_SHORT).show();
+                Latitude = data.getDoubleExtra("getLatitude", 0);
+                Longitude = data.getDoubleExtra("getLongitude", 0);
+                Toast.makeText(this, "" + Latitude + Longitude, Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -253,4 +271,7 @@ public class AddItem_Found extends AppCompatActivity {
     }
 
 
+    public void goback(View view) {
+        startActivity(new Intent(AddItem_Found.this, Main.class));
+    }
 }

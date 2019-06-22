@@ -10,8 +10,22 @@ public class LostModel {
     private String date;
     private String publisher_name;
     private String publisher_image;
+    private String age;
+
 
     public LostModel() {
+    }
+
+    public LostModel(String child_name, String phone, String description, String adress, String child_img, String date, String publisher_name, String publisher_image, String age) {
+        this.child_name = child_name;
+        this.phone = phone;
+        this.description = description;
+        this.adress = adress;
+        this.child_img = child_img;
+        this.date = date;
+        this.publisher_name = publisher_name;
+        this.publisher_image = publisher_image;
+        this.age = age;
     }
 
     public String getChild_name() {
@@ -78,16 +92,11 @@ public class LostModel {
         this.publisher_image = publisher_image;
     }
 
-    public LostModel(String child_name, String phone, String description, String adress, String child_img, String date, String publisher_name, String publisher_image) {
-        this.child_name = child_name;
-        this.phone = phone;
-        this.description = description;
-        this.adress = adress;
-        this.child_img = child_img;
-        this.date = date;
-        this.publisher_name = publisher_name;
-        this.publisher_image = publisher_image;
+    public String getAge() {
+        return age;
+    }
 
-
+    public void setAge(String age) {
+        this.age = age;
     }
 }

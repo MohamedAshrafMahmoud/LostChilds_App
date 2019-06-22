@@ -13,7 +13,7 @@ import com.mapbox.mapboxsdk.maps.MapView;
 public class FoundViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView user_img,child_img,settings,map;
-    public TextView username,date,childname,helper_name,phone_number,description;
+    public TextView username,date,childname,helper_name,phone_number,description,age;
     public LinearLayout comment,share;
 
     public FoundViewHolder(View itemView) {
@@ -23,6 +23,7 @@ public class FoundViewHolder extends RecyclerView.ViewHolder {
         child_img=(ImageView)itemView.findViewById(R.id.childimage);
         settings=(ImageView)itemView.findViewById(R.id.settings);
         username=(TextView) itemView.findViewById(R.id.username);
+        age = (TextView) itemView.findViewById(R.id.childage);
         date=(TextView) itemView.findViewById(R.id.date);
         childname=(TextView) itemView.findViewById(R.id.childname);
         helper_name=(TextView) itemView.findViewById(R.id.helpername);

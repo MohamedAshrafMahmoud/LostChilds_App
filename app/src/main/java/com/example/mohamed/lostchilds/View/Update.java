@@ -82,7 +82,6 @@ public class Update extends AppCompatActivity {
                New_Password.setText(user.getPassword());
                New_Phone.setText(user.getPhone());
                 Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).into(P_Image);
-                Toast.makeText(Update.this, ""+dataSnapshot.child("p_image").getValue(), Toast.LENGTH_SHORT).show();
 
 
 

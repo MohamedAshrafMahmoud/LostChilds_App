@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohamed.lostchilds.R;
+import com.example.mohamed.lostchilds.View.Main;
+import com.example.mohamed.lostchilds.View.found.AddItem_Found;
 import com.example.mohamed.lostchilds.common.Common;
 import com.example.mohamed.lostchilds.model.LostModel;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,7 +37,7 @@ public class AddItem_Lost extends AppCompatActivity {
 
     ImageView childimage, takeimge;
     TextView username, publish;
-    EditText edit_phone, edit_name, edit_description, edit_adress;
+    EditText edit_phone, edit_name, edit_description, edit_adress, edit_age;
 
     LostModel lostModel;
 
@@ -77,11 +79,14 @@ public class AddItem_Lost extends AppCompatActivity {
                     edit_phone.setError("phone not entered");
                     edit_phone.requestFocus();
                 } else if (edit_description.getText().toString().length() == 0) {
-                    edit_description.setError("edit_description not entered");
+                    edit_description.setError(" description not entered");
                     edit_description.requestFocus();
                 } else if (edit_adress.getText().toString().length() == 0) {
-                    edit_adress.setError("edit_adress not entered");
+                    edit_adress.setError(" adress not entered");
                     edit_adress.requestFocus();
+                 } else if (edit_age.getText().toString().length() == 0) {
+                    edit_age.setError("age not entered");
+                    edit_age.requestFocus();
                 } else {
                     uploadData();
 
@@ -124,7 +129,8 @@ public class AddItem_Lost extends AppCompatActivity {
                                                 String.valueOf(R.drawable.ic_account_circle_black_24dp),
                                                 Common.getDate(),
                                                 Common.currentUser.getName(),
-                                                Common.currentUser_image
+                                                Common.currentUser_image,
+                                                edit_age.getText().toString()
                                         );
                                     } else {
                                         lostModel = new LostModel(
@@ -135,7 +141,8 @@ public class AddItem_Lost extends AppCompatActivity {
                                                 uri.toString(),
                                                 Common.getDate(),
                                                 Common.currentUser.getName(),
-                                                Common.currentUser_image);
+                                                Common.currentUser_image,
+                                                edit_age.getText().toString());
                                     }
                                     databaseReference.child(String.valueOf(System.currentTimeMillis())).setValue(lostModel);
                                     Toast.makeText(AddItem_Lost.this, "New post was added", Toast.LENGTH_SHORT).show();
@@ -177,6 +184,7 @@ public class AddItem_Lost extends AppCompatActivity {
         lostModel.setDescription(edit_description.getText().toString());
         lostModel.setPhone(edit_phone.getText().toString());
         lostModel.setAdress(edit_adress.getText().toString());
+        lostModel.setAge(edit_age.getText().toString());
         lostModel.setDate(Common.getDate());
 
         databaseReference.push().setValue(lostModel);
@@ -192,6 +200,7 @@ public class AddItem_Lost extends AppCompatActivity {
     private void initViews() {
         edit_description = (EditText) findViewById(R.id.description);
         edit_phone = (EditText) findViewById(R.id.edtphone);
+        edit_age = (EditText) findViewById(R.id.editage);
         edit_name = (EditText) findViewById(R.id.edtname);
         edit_adress = (EditText) findViewById(R.id.edtadress);
         username = (TextView) findViewById(R.id.username);
@@ -218,4 +227,8 @@ public class AddItem_Lost extends AppCompatActivity {
          }
     }
 
+    public void goback(View view) {
+        startActivity(new Intent(AddItem_Lost.this, Main.class));
+
+    }
 }

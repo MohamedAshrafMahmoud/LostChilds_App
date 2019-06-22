@@ -30,4 +30,17 @@
         <item name="colorAccent">@color/colorAccent2</item>
     </style>
 
+    <!-- no status bar-->
+    <style parent="Theme.AppCompat.Light.NoActionBar" name="FullScreen">
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+
+
 </resources>

@@ -16,7 +16,7 @@ import com.example.mohamed.lostchilds.R;
 
 public class News extends Fragment {
 WebView mWebView;
-String url="https://www.youm7.com/Section/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%B9%D8%A7%D8%AC%D9%84%D8%A9/65/1";
+String url="http://www.missingkids.com/gethelpnow/search";
 
     public News() {
         // Required empty public constructor

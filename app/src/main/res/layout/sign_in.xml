@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:gravity="center"
-    android:background="@color/colorAccent"
+    android:orientation="vertical"
     tools:context=".View.SignIn">
 
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:gravity="center"
+        android:onClick="goSignUp"
+        android:layout_gravity="center"
+        android:text="Lost Childs"
+        android:textColor="#fff"
+        android:textSize="30dp"
+        android:layout_marginBottom="80dp"
+        android:textStyle="bold" />
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:backgroundTint="#6A000000"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="20dp">
+        app:cardCornerRadius="20dp">
 
 
         <LinearLayout
@@ -26,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
 
             <android.support.design.widget.TextInputLayout
@@ -44,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="name"
+                    android:text="hassan"
                     android:textColor="#fff"
                     android:textSize="20dp" />
 
@@ -67,6 +79,7 @@
                     android:ems="10"
                     android:hint="Password"
                     android:inputType="textPassword"
+                    android:text="hh"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
                     android:textSize="20dp" />
@@ -80,53 +93,45 @@
 
     <CheckBox
         android:id="@+id/checkremember"
-        android:layout_below="@id/card"
-        android:layout_alignLeft="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center_vertical"
+        android:layout_below="@id/card"
+        android:layout_alignLeft="@+id/card"
+        android:layout_gravity="left"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
         android:buttonTint="#fff"
+        android:gravity="center_vertical"
         android:text="Remember me"
         android:textColor="#fff" />
-    <LinearLayout
-        android:layout_width="200dp"
+
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_alignRight="@id/card"
-        android:layout_below="@id/checkremember"
-        >
-
-        <Button
-            android:id="@+id/login"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="Login"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:background="@drawable/btn_background"
-            android:layout_marginRight="5dp"
-            />
-
-        <Button
-            android:background="@drawable/btn_background"
-            android:layout_weight="1"
-            android:textSize="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:onClick="goSignUp"
-            />
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/btn_background"
+        android:text="Login"
+        android:textColor="#fff"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
 
-            />
-    </LinearLayout>
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+         android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:onClick="goSignUp"
+        android:text="create new account?"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
-
-</RelativeLayout>
+</LinearLayout>

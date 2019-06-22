@@ -11,7 +11,7 @@ import com.example.mohamed.lostchilds.R;
 public class LostViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView user_img, child_img, settings;
-    public TextView username, date, childname, phone_number, adress, description;
+    public TextView username, date, childname, phone_number, adress, description,age;
     public LinearLayout comment, share;
 
     public LostViewHolder(View itemView) {
@@ -23,6 +23,7 @@ public class LostViewHolder extends RecyclerView.ViewHolder {
         username = (TextView) itemView.findViewById(R.id.username);
         date = (TextView) itemView.findViewById(R.id.date);
         childname = (TextView) itemView.findViewById(R.id.childname);
+        age = (TextView) itemView.findViewById(R.id.childage);
         phone_number = (TextView) itemView.findViewById(R.id.phonenumber);
         adress = (TextView) itemView.findViewById(R.id.adress);
         description = (TextView) itemView.findViewById(R.id.description);

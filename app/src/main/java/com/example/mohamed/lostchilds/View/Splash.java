@@ -37,7 +37,7 @@ public class Splash extends Activity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
-                timeSec = 1000;
+                timeSec = 5000;
                 // Start your app Main activity
                 try {
                     sleep(timeSec);
