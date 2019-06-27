@@ -79,7 +79,7 @@ public class Profile extends AppCompatActivity {
                 Email.setText(user.getEmail());
                 Password.setText(user.getPassword());
                 Phone.setText(user.getPhone());
-                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).into(_Image);
+                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).placeholder(R.drawable.ic_account_circle_black_24dp).into(_Image);
 
 
 

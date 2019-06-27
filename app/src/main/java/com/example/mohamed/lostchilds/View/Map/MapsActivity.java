@@ -1099,7 +1099,6 @@ public class MapsActivity extends AppCompatActivity implements
 
 
                 bundle=getIntent().getExtras();
-                Toast.makeText(MapsActivity.this, ""+bundle.getDouble("Latitude")+bundle.getDouble("Longitude"), Toast.LENGTH_SHORT).show();
                 repositionMapCamerasearch(bundle.getDouble("Latitude"),bundle.getDouble("Longitude"),"مركز منوف");
 
 

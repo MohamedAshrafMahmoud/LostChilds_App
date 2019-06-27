@@ -216,6 +216,15 @@ public class Found_fragment extends Fragment {
         adapter = new FirebaseRecyclerAdapter<FoundModel, FoundViewHolder>(FoundModel.class, R.layout.display_item__found, FoundViewHolder.class, databaseReference) {
             @Override
             protected void populateViewHolder(final FoundViewHolder viewHolder, FoundModel model, int position) {
+
+
+                if (model.getPublisher_name().equals(Common.currentUser.getName())){
+
+                    viewHolder.settings.setVisibility(View.VISIBLE);
+                }else {
+                    viewHolder.settings.setVisibility(View.INVISIBLE);
+
+                }
                 viewHolder.username.setText(model.getPublisher_name());
                 viewHolder.date.setText(model.getDate());
                 viewHolder.childname.setText(model.getChild_name());
@@ -223,8 +232,10 @@ public class Found_fragment extends Fragment {
                 viewHolder.helper_name.setText(model.getHelper());
                 viewHolder.description.setText(model.getDescription());
                 viewHolder.age.setText(model.getAge());
-                Picasso.get().load(model.getPublisher_image()).into(viewHolder.user_img);
-                Picasso.get().load(model.getChild_img()).into(viewHolder.child_img);
+                Picasso.get().load(model.getPublisher_image()).placeholder(R.drawable.ic_account_circle_black_24dp).into(viewHolder.user_img);
+                Picasso.get().load(model.getChild_img()).placeholder(R.drawable.ic_account_circle_black_24dp).into(viewHolder.child_img);
+
+
 
 
                 // shared link
@@ -381,6 +392,7 @@ public class Found_fragment extends Fragment {
                 viewHolder.settings.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
 
                         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
                         builder.setMessage("Do you want to delet this post?");

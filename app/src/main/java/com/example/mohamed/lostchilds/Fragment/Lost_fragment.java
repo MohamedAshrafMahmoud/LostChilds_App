@@ -125,6 +125,16 @@ public class Lost_fragment extends Fragment {
         adapter = new FirebaseRecyclerAdapter<LostModel, LostViewHolder>(LostModel.class, R.layout.display_item__lost, LostViewHolder.class, databaseReference) {
             @Override
             protected void populateViewHolder(LostViewHolder viewHolder, LostModel model, int position) {
+
+
+                if (model.getPublisher_name().equals(Common.currentUser.getName())){
+
+                    viewHolder.settings.setVisibility(View.VISIBLE);
+                }else {
+                    viewHolder.settings.setVisibility(View.GONE);
+
+                }
+
                 viewHolder.username.setText(model.getPublisher_name());
                 viewHolder.date.setText(model.getDate());
                 viewHolder.childname.setText(model.getChild_name());
@@ -132,8 +142,9 @@ public class Lost_fragment extends Fragment {
                 viewHolder.adress.setText(model.getAdress());
                 viewHolder.age.setText(model.getAge());
                 viewHolder.description.setText(model.getDescription());
-                Picasso.get().load(model.getPublisher_image()).into(viewHolder.user_img);
-                Picasso.get().load(model.getChild_img()).into(viewHolder.child_img);
+                Picasso.get().load(model.getPublisher_image()).placeholder(R.drawable.ic_account_circle_black_24dp).into(viewHolder.user_img);
+                Picasso.get().load(model.getChild_img()).placeholder(R.drawable.ic_account_circle_black_24dp).into(viewHolder.child_img);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

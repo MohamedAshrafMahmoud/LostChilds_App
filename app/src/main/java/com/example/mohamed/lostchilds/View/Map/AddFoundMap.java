@@ -618,20 +618,20 @@ public class AddFoundMap extends AppCompatActivity implements
         GeoJsonSource navigationLineLayerGeoJsonSource = new GeoJsonSource("navigation-route-source-id");
         try {
             mapboxMap.getStyle().addSource(navigationLineLayerGeoJsonSource);
-
+            // Create and add the LineLayer to the map to show the navigation route line
+            LineLayer navigationRouteLineLayer = new LineLayer("navigation-route-layer-id",
+                    navigationLineLayerGeoJsonSource.getId());
+            navigationRouteLineLayer.withProperties(
+                    lineColor(customThemeManager.getNavigationLineColor()),
+                    lineWidth(NAVIGATION_LINE_WIDTH)
+            );
+            mapboxMap.getStyle().addLayerBelow(navigationRouteLineLayer, "store-location-layer-id");
         }catch (Exception e){
 
             finish();
         }
 
-        // Create and add the LineLayer to the map to show the navigation route line
-        LineLayer navigationRouteLineLayer = new LineLayer("navigation-route-layer-id",
-                navigationLineLayerGeoJsonSource.getId());
-        navigationRouteLineLayer.withProperties(
-                lineColor(customThemeManager.getNavigationLineColor()),
-                lineWidth(NAVIGATION_LINE_WIDTH)
-        );
-        mapboxMap.getStyle().addLayerBelow(navigationRouteLineLayer, "store-location-layer-id");
+
     }
 
 

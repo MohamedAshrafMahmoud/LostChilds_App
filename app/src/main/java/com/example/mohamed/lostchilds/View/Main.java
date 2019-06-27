@@ -177,7 +177,7 @@ public class Main extends AppCompatActivity {
                 Common.currentUser_image=dataSnapshot.child("p_image").getValue().toString();
                 main_username.setText(Common.currentUser.getName());
 
-                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).into(main_img_profile);
+                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).placeholder(R.drawable.ic_account_circle_black_24dp).into(main_img_profile);
 
 
 

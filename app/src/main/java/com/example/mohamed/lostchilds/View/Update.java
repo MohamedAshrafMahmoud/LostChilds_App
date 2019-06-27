@@ -35,7 +35,7 @@ import java.util.UUID;
 public class Update extends AppCompatActivity {
 
     ImageView P_Image;
-    EditText New_Name,New_Email,New_Password,New_Phone;
+    EditText New_Email,New_Password,New_Phone;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
      ProgressDialog progressDialog;
@@ -52,7 +52,6 @@ public class Update extends AppCompatActivity {
     }
 
     private void initview(){
-        New_Name=findViewById(R.id.new_name);
         New_Email=findViewById(R.id.new_email);
         New_Password=findViewById(R.id.new_password);
         New_Phone=findViewById(R.id.new_phone);
@@ -75,15 +74,15 @@ public class Update extends AppCompatActivity {
         databaseReference.child(Common.currentUser.getName()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               User user=dataSnapshot.getValue(User.class);
+                User user = dataSnapshot.getValue(User.class);
 
-               New_Name.setText(Common.currentUser.getName());
-               New_Email.setText(user.getEmail());
-               New_Password.setText(user.getPassword());
-               New_Phone.setText(user.getPhone());
-                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).into(P_Image);
+                New_Email.setText(user.getEmail());
+                New_Password.setText(user.getPassword());
+                New_Phone.setText(user.getPhone());
+                Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).placeholder(R.drawable.ic_account_circle_black_24dp).into(P_Image);
 
 
+            Common.currentUser=user;
 
                 progressDialog.dismiss();
 
@@ -179,6 +178,7 @@ public class Update extends AppCompatActivity {
                                              uri.toString());
 
                                     databaseReference.child(Common.currentUser.getName()).setValue(userInformation);
+                                    GetData();
                                     startActivity(new Intent(Update.this, Main.class));
                                     Toast.makeText(Update.this, "تم بنجاح", Toast.LENGTH_SHORT).show();
 

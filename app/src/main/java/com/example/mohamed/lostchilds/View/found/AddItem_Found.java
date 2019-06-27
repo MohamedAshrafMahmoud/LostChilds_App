@@ -249,7 +249,6 @@ public class AddItem_Found extends AppCompatActivity {
 
                 Latitude = data.getDoubleExtra("getLatitude", 0);
                 Longitude = data.getDoubleExtra("getLongitude", 0);
-                Toast.makeText(this, "" + Latitude + Longitude, Toast.LENGTH_SHORT).show();
 
             }
         }
