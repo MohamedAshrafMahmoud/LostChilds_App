@@ -19,24 +19,24 @@
 
 
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="69dp"
-            android:layout_height="65dp"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:id="@+id/fab"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_search_black_24dp"
-            app:layout_anchorGravity="bottom|right|end"
-            mapbox:layout_constraintBottom_toBottomOf="@+id/mapView"
-            mapbox:layout_constraintEnd_toEndOf="parent"
-            mapbox:layout_constraintHorizontal_bias="1.0"
-            mapbox:layout_constraintStart_toStartOf="parent"
-            mapbox:layout_constraintVertical_bias="1.0" />
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:layout_width="69dp"-->
+            <!--android:layout_height="65dp"-->
+            <!--android:layout_gravity="bottom|right"-->
+            <!--android:layout_margin="16dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:backgroundTint="@color/colorPrimary"-->
+            <!--android:src="@drawable/ic_search_black_24dp"-->
+            <!--app:layout_anchorGravity="bottom|right|end"-->
+            <!--mapbox:layout_constraintBottom_toBottomOf="@+id/mapView"-->
+            <!--mapbox:layout_constraintEnd_toEndOf="parent"-->
+            <!--mapbox:layout_constraintHorizontal_bias="1.0"-->
+            <!--mapbox:layout_constraintStart_toStartOf="parent"-->
+            <!--mapbox:layout_constraintVertical_bias="1.0" />-->
 
 
     <!--<android.support.v7.widget.RecyclerView-->

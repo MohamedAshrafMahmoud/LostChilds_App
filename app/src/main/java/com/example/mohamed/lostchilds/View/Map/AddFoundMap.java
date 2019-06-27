@@ -139,7 +139,6 @@ public class AddFoundMap extends AppCompatActivity implements
     private LocationComponent locationComponent;
     private static LatLng MOCK_DEVICE_LOCATION_LAT_LNG;
     Point mockCurrentLocation, selectedFeaturePoint;
-    private FloatingActionButton Fab_Search;
     private int REQUEST_CODE_AUTOCOMPLETE=11;
     GeoJsonSource source;
     Marker marker;
@@ -236,24 +235,12 @@ public class AddFoundMap extends AppCompatActivity implements
 
         // Set up the Mapbox map
         mapView = findViewById(R.id.mapView);
-        Fab_Search=findViewById(R.id.fab);
 
     }
 
 
     public void actionWidgets(){
 
-
-
-        Fab_Search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new PlaceAutocomplete.IntentBuilder()
-                        .accessToken(getString(R.string.access_token))
-                        .build(AddFoundMap.this);
-                startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
-            }
-        });
 
 
 
@@ -342,7 +329,6 @@ public class AddFoundMap extends AppCompatActivity implements
                                 finish();
 
 
-                                Toast.makeText(this, ""+listOfIndividualLocations.get(x).getName(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -781,25 +767,6 @@ public class AddFoundMap extends AppCompatActivity implements
 
 
 
-    @SuppressWarnings( {"MissingPermission"})
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_AUTOCOMPLETE) {
-            CarmenFeature feature = PlaceAutocomplete.getPlace(data);
-            String PLACE_NAME= PlaceAutocomplete.getPlace(data).placeName();
-
-            Point singleLocationPosition = (Point) feature.geometry();
-
-            Point destinationPoint = Point.fromLngLat(singleLocationPosition.longitude(), singleLocationPosition.latitude());
-            Point originPoint = Point.fromLngLat(locationComponent.getLastKnownLocation().getLongitude(),
-                    locationComponent.getLastKnownLocation().getLatitude());
-
-
-
-        }
-    }
 
 
 

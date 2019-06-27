@@ -176,7 +176,7 @@ public class Update extends AppCompatActivity {
                                             New_Phone.getText().toString(),
                                             New_Email.getText().toString(),
                                             New_Password.getText().toString(),
-                                            uri.toString());
+                                             uri.toString());
 
                                     databaseReference.child(Common.currentUser.getName()).setValue(userInformation);
                                     startActivity(new Intent(Update.this, Main.class));

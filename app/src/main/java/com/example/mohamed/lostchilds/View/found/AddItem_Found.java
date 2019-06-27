@@ -74,41 +74,35 @@ public class AddItem_Found extends AppCompatActivity {
             }
         });
 
-//        publish.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (edit_name.getText().toString().length() == 0) {
-//                    edit_name.setError("name not entered");
-//                    edit_name.requestFocus();
-//                } else if (edit_phone.getText().toString().length() == 0) {
-//                    edit_phone.setError("phone not entered");
-//                    edit_phone.requestFocus();
-//                } else if (edit_description.getText().toString().length() == 0) {
-//                    edit_description.setError("description not entered");
-//                    edit_description.requestFocus();
-//                }else if (edit_age.getText().toString().length() == 0) {
-//                    edit_age.setError("age not entered");
-//                    edit_age.requestFocus();
-//                } else {
-//
-//                    if (Latitude != 0) {
-//                        uploadData();
-//                    }else {
-//
-//                        Toast.makeText(AddItem_Found.this, "Select Location", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }
-//            }
-//        });
-
         publish.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                if (edit_name.getText().toString().length() == 0) {
+                    edit_name.setError("name not entered");
+                    edit_name.requestFocus();
+                } else if (edit_phone.getText().toString().length() == 0) {
+                    edit_phone.setError("phone not entered");
+                    edit_phone.requestFocus();
+                } else if (edit_description.getText().toString().length() == 0) {
+                    edit_description.setError("description not entered");
+                    edit_description.requestFocus();
+                }else if (edit_age.getText().toString().length() == 0) {
+                    edit_age.setError("age not entered");
+                    edit_age.requestFocus();
+                } else {
 
+                    if (Latitude != 0) {
+                        uploadData();
+                    }else {
 
+                        Toast.makeText(AddItem_Found.this, "Select Location", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }
         });
+
+
 
 
     }
