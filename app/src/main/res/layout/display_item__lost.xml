@@ -223,7 +223,8 @@
                         android:layout_marginRight="20dp"
                         android:text="description"
                         android:textColor="#000"
-
+                        android:maxLength="20"
+                        android:maxLines="3"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 

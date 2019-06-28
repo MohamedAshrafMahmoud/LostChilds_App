@@ -3,8 +3,11 @@ package com.example.mohamed.lostchilds.View.Lost;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -29,6 +32,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -46,6 +52,8 @@ public class AddItem_Lost extends AppCompatActivity {
 
     Uri saveuri;
     private final int pickImageRequest = 71;
+    int SELECT_IMAGE_PROFILE = 202;
+    Bitmap bitmap;
 
 
     @Override
@@ -84,7 +92,7 @@ public class AddItem_Lost extends AppCompatActivity {
                 } else if (edit_adress.getText().toString().length() == 0) {
                     edit_adress.setError(" adress not entered");
                     edit_adress.requestFocus();
-                 } else if (edit_age.getText().toString().length() == 0) {
+                } else if (edit_age.getText().toString().length() == 0) {
                     edit_age.setError("age not entered");
                     edit_age.requestFocus();
                 } else {
@@ -205,7 +213,7 @@ public class AddItem_Lost extends AppCompatActivity {
         edit_adress = (EditText) findViewById(R.id.edtadress);
         username = (TextView) findViewById(R.id.username);
         takeimge = (ImageView) findViewById(R.id.takeimge);
-        childimage = (ImageView) findViewById(R.id.childimage);
+        childimage = (ImageView) findViewById(R.id.userimage);
         publish = (TextView) findViewById(R.id.publish);
 
     }
@@ -215,16 +223,25 @@ public class AddItem_Lost extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "select picture"), pickImageRequest);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == pickImageRequest && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (resultCode == RESULT_OK) {
+
             saveuri = data.getData();
-         }
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), saveuri);
+                // Log.d(TAG, String.valueOf(bitmap));
+
+                childimage.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void goback(View view) {

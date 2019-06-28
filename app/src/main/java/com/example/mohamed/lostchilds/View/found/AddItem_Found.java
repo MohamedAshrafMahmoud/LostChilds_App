@@ -244,6 +244,7 @@ public class AddItem_Found extends AppCompatActivity {
 
             if (requestCode == pickImageRequest) {
                 saveuri = data.getData();
+                Toast.makeText(this, "تم اختيار الصوره", Toast.LENGTH_SHORT).show();
             } else if (requestCode == REQUEST_CODE_1) {
 
 
