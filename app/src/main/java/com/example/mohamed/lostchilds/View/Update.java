@@ -82,7 +82,6 @@ public class Update extends AppCompatActivity {
                 Picasso.get().load(dataSnapshot.child("p_image").getValue().toString()).placeholder(R.drawable.ic_account_circle_black_24dp).into(P_Image);
 
 
-            Common.currentUser=user;
 
                 progressDialog.dismiss();
 
@@ -133,20 +132,10 @@ public class Update extends AppCompatActivity {
 
     public void Send_Update(View view) {
 
-        if (New_Email.getText().toString().length() == 0) {
-            New_Email.setError("name not entered");
-            New_Email.requestFocus();
-        } else if (New_Password.getText().toString().length() == 0) {
-            New_Password.setError("phone not entered");
-            New_Password.requestFocus();
 
-        } else if (New_Phone.getText().toString().length() == 0) {
-            New_Phone.setError("email not entered");
-            New_Phone.requestFocus();
-        }  else {
 
             uploadImage();
-        }
+
     }
 
 
@@ -202,6 +191,17 @@ public class Update extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
+        }
+        else {
+
+            databaseReference.child(Common.currentUser.getName()).child("email").setValue(New_Email.getText().toString());
+            databaseReference.child(Common.currentUser.getName()).child("password").setValue(New_Password.getText().toString());
+            databaseReference.child(Common.currentUser.getName()).child("phone").setValue(New_Phone.getText().toString());
+
+            startActivity(new Intent(Update.this, Main.class));
+            Toast.makeText(Update.this, "تم بنجاح", Toast.LENGTH_SHORT).show();
+
+
         }
     }
 }

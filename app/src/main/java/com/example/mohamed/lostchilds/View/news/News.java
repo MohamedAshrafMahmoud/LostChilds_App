@@ -18,7 +18,7 @@ import com.example.mohamed.lostchilds.R;
 
 public class News extends Fragment {
 WebView mWebView;
-String url="https://scholasticnews.scholastic.com";
+String url="https://www.carefind.ca";
 ProgressDialog progressDialog;
 
     public News() {
